@@ -13,8 +13,9 @@ If you're tired of seeing this image across the web:
 [Install the extension](https://chrome.google.com/webstore/detail/photobucket-embed-fix/naolkcpnnlofnnghnmfegnfnflicjjgj), and you should see the actual image.
 
 --
-Example page (to see some affected embeds)
-http://advrider.com/index.php?threads/the-crf250l-owners-thread.823409/page-5#post-19552274
+
+[Example page](http://advrider.com/index.php?threads/the-crf250l-owners-thread.823409/page-5#post-19552274) (to see some affected embeds)
+
 --
 
 MIT License
