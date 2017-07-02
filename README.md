@@ -2,6 +2,8 @@
 
 Also Available in Chrome Web Store: https://chrome.google.com/webstore/detail/photobucket-embed-fix/naolkcpnnlofnnghnmfegnfnflicjjgj
 
+## NOTE: You may need to clear your browser cache (at least for images) before you will be able to see some images (if you already tried to view them before installing this)
+
 Photobucket recently updated their TOS to disable third party embedding unless the user who owns the photos pays $299.
 
 # TL;DR;
