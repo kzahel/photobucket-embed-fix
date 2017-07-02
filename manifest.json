@@ -1,0 +1,16 @@
+{
+  "name": "photobucket embed fix",
+  "version": "0.0.1",
+  "permissions": [
+    "webRequest",
+    "webRequestBlocking",
+    "storage",
+    "*://*.photobucket.com/*",
+    "*://photobucket.com/*"
+  ],
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "manifest_version":2
+  
+}
