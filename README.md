@@ -18,6 +18,8 @@ If you're tired of seeing this image across the web:
 
 [Example page](http://advrider.com/index.php?threads/the-crf250l-owners-thread.823409/page-5#post-19552274) (to see some affected embeds)
 
+[Example photobucket+wordpress page](https://treefool.com/)
+
 --
 
 MIT License
