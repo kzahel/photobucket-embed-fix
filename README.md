@@ -1,3 +1,18 @@
+# Update Jul 9 2017
+
+Photobucket has made an update to their referer checking code so that this extension no longer works in the current form.
+Pull requests welcome.
+
+Notes for maybe how to fix:
+
+Setting referer to: `'http://photobucket.com/gallery/' + info.url + '.html'` used to work
+
+Now it needs to be: `http://photobucket.com/gallery/user/xr650r5/media/cGF0aDovSU1HXzAwMDQtMjkuanBn/?ref=`
+
+To get that opaque string `cGF0aDovSU1HXzAwMDQtMjkuanBn` you need to actually get the redirect URL when you visit the image URL without a referer header.
+
+Accepting pull requests!
+
 # Photobucket Embed Fix
 
 Also Available in Chrome Web Store: https://chrome.google.com/webstore/detail/photobucket-embed-fix/naolkcpnnlofnnghnmfegnfnflicjjgj
