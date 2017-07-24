@@ -1,31 +1,39 @@
-var pb_urls = [
+const pb_urls = [
   '*://*.photobucket.com/*',
   '*://photobucket.com/*'
 ]
-var wp_urls = [
+const wp_urls = [
   '*://*.wp.com/*.photobucket.com/*',
   '*://*.wp.com/photobucket.com/*'
 ]
 
-var pb_opts = { urls: pb_urls,
-                types: ['image'] }
-chrome.webRequest.onBeforeSendHeaders.addListener( onheaders, pb_opts, ['requestHeaders','blocking'] )
+const pb_opts = {
+  urls: pb_urls,
+  types: ['image']
+}
+chrome.webRequest.onBeforeSendHeaders.addListener(onheaders, pb_opts, ['requestHeaders', 'blocking'])
 
-var wp_opts = { urls: wp_urls,
-                types: ['image'] }
-chrome.webRequest.onBeforeRequest.addListener( onrequest, wp_opts, ['blocking'] )
+const wp_opts = {
+  urls: wp_urls,
+  types: ['image']
+}
+chrome.webRequest.onBeforeRequest.addListener(onrequest, wp_opts, ['blocking'])
 
-function onheaders(info) {
-  for (var hdr of info.requestHeaders) {
-    if (hdr.name.toLowerCase() == 'referer') {
-      var newref = 'http://photobucket.com/gallery/' + info.url + '.html'
-      hdr.value = newref
-    }
+function onheaders({ url, requestHeaders }) {
+  const matches = /albums\/\w+\/(\w+)\//.exec(url);
+  const refererUrl = `http://photobucket.com/gallery/user/${matches[1]}/media/`;
+  const headerIndex = requestHeaders.findIndex(header => header.name.toLowerCase() === 'referer');
+
+  if (headerIndex > -1) {
+    requestHeaders[headerIndex].value = refererUrl;
+  } else {
+    requestHeaders.push({ name: 'referer', value: refererUrl });
   }
-  return { requestHeaders: info.requestHeaders }
+
+  return { requestHeaders }
 }
 
 function onrequest(info) {
-  var re = /^.+\.wp\.com\/((?:.+\.)?photobucket\.com\/.+)/;
+  const re = /^.+\.wp\.com\/((?:.+\.)?photobucket\.com\/.+)/;
   return { redirectUrl: info.url.replace(re, 'https://$1') };
 }
